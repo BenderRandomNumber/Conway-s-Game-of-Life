@@ -1,3 +1,4 @@
+# I rewrote this because I was unhappy with the speed of V1 (even though it was expected), so I re did it using arrays
 import numpy as np
 import cv2
 
@@ -58,7 +59,7 @@ def show_board(board_array, wait_time, alive_rgb, dead_rgb):
     cv2.waitKey(wait_time)
 
 
-def play(starting_array, max_gen, dead_color, alive_color, waitTime):
+def play(starting_array, max_gen, dead_color, alive_color, fps):
     a_rgb = np.asarray(dead_color)
     d_rgb = np.asarray(alive_color)
     previous_array = starting_array
@@ -66,7 +67,7 @@ def play(starting_array, max_gen, dead_color, alive_color, waitTime):
     i = 0
     done = False
     while not done:
-        show_board(previous_array, waitTime, a_rgb, d_rgb)
+        show_board(previous_array, (1000 / fps), a_rgb, d_rgb)
         previous_array = array
         array = update_board(previous_array)
         if i == max_gen:
