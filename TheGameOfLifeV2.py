@@ -1,4 +1,3 @@
-# I rewrote this because I was unhappy with the speed of V1 (even though it was expected), so I re did it using arrays
 import numpy as np
 import cv2
 
@@ -48,26 +47,27 @@ def update_board(board_array):
     return updated_array.astype(np.int64)
 
 
-def show_board(board_array, wait_time, alive_rgb, dead_rgb):
+def show_board(board_array, wait_time, alive_rgb, dead_rgb, scale):
     new_array = np.repeat(board_array, 3).reshape((board_array.shape[0] * board_array.shape[1], 3))
     alive = (new_array == 0) * alive_rgb
     dead = (new_array == 1) * dead_rgb
     new_array = dead + alive
 
     array_img = np.reshape(new_array, (board_array.shape[0], board_array.shape[1], 3)).astype(np.uint8)
+    array_img = cv2.resize(array_img, dsize=(int(array_img.shape[1] * scale), int(array_img.shape[0] * scale)), interpolation=0)
     cv2.imshow("The Game of Life", array_img)
     cv2.waitKey(wait_time)
 
 
-def play(starting_array, max_gen, dead_color, alive_color, fps):
-    a_rgb = np.asarray(dead_color)
-    d_rgb = np.asarray(alive_color)
+def play(starting_array, max_gen, dead_color, alive_color, fps, scale):
+    a_rgb = (np.asarray(dead_color))[::-1]
+    d_rgb = (np.asarray(alive_color))[::-1]
     previous_array = starting_array
     array = update_board(previous_array)
     i = 0
     done = False
     while not done:
-        show_board(previous_array, (1000 / fps), a_rgb, d_rgb)
+        show_board(previous_array, int(1000 / fps), a_rgb, d_rgb, scale)
         previous_array = array
         array = update_board(previous_array)
         if i == max_gen:
