@@ -1,2 +1,4 @@
 # Conway-s-Game-of-Life
-just replicating conway's game of life in python
+Conway's Game of Life is a celuar cellular automaton devised by the mathemitician John Horton Conway in 1970.
+
+The Game is 
