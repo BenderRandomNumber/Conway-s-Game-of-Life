@@ -10,7 +10,9 @@ The board evolves by going through each cell determining if it will be dead or a
 "Well, what are these sacred rules you speak of" I hear you beg, well, first you need to understand one concept. When I refer to neighbor cells I mean all the cells bordering even if they are touching by corners. An example of this is bellow(1 is the neighboring cells of the 0 cell).
 
 111
+
 101
+
 111
 
 Rule Uno:
