@@ -7,11 +7,11 @@ The initial starting board is a 2d grid of squares. Each square is either dead o
 
 The board evolves by going through each cell determining if it will be dead or alive the next generation based on three rules.
 
-"Well, what are these sacred rules you speak of" I hear you beg, well, first you need to understand one concept. When I refer to neighbor cells I mean all the cells bordering even if they are touching by corners. An example of this is bellow(# - neighboring cells of the 0 cell).
+"Well, what are these sacred rules you speak of" I hear you beg, well, first you need to understand one concept. When I refer to neighbor cells I mean all the cells bordering even if they are touching by corners. An example of this is bellow(1 is the neighboring cells of the 0 cell).
 
-###
-#0#
-###
+111
+101
+111
 
 Rule Uno:
 If a cell is alive and has less than two alive neighbors, the cell will die of underpopulation.
